@@ -17,10 +17,9 @@
 @import 'colors.scss';
 
 .application {
-  width: 50%;
-
   &__title {
     font-size: 3.5rem;
+    line-height: 4rem;
   }
 
   &__info {

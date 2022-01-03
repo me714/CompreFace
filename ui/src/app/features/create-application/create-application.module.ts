@@ -15,15 +15,17 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { CreateApplicationComponent } from './create-application.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [CreateApplicationComponent],
   exports: [CreateApplicationComponent],
-  imports: [CommonModule, MatButtonModule, MatStepperModule, TranslateModule, FormsModule],
+  imports: [CommonModule, MatButtonModule, MatStepperModule, MatSelectModule, MatInputModule, TranslateModule, ReactiveFormsModule],
 })
 export class CreateApplicationModule {}

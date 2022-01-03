@@ -16,8 +16,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
 import { CreateApplicationModule } from 'src/app/features/create-application/create-application.module';
 import { CreateApplicationWizardComponent } from './create-application-wizard.component';
 
@@ -27,6 +27,7 @@ import { CreateApplicationWizardComponent } from './create-application-wizard.co
     CommonModule,
     CreateApplicationModule,
     MatCardModule,
+    MatStepperModule,
     RouterModule.forChild([{ path: '', component: CreateApplicationWizardComponent }]),
   ],
 })

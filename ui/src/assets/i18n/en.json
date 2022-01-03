@@ -208,14 +208,24 @@
     "change_password_success": "Password has successfully been changed"
   },
   "create_application_wizard": {
-    "title": {
-      "p1": "Create your",
-      "p2": "application"
+    "application": {
+      "title": {
+        "p1": "Create your",
+        "p2": "application"
+      },
+      "info_about_application": "Application is where you can create and manage your face recognition services. It allows restricting their visibility from other users",
+      "application_name_question": "What would you like to name this application ?",
+      "application_name": "Application name",
+      "next": "Next"
     },
-    "info_about_application": "Application is where you can create and manage your face recognition services. It allows restricting their visibility from other users",
-    "application_name_question": "What would you like to name this application ?",
-    "application_name": "Application name",
-    "next": "Next"
+    "service": {
+      "title": "Add a service",
+      "info_about_service": "Services provide you with different face recognition functionality. Each service has an API key you need to make requests. Please choose service type according to your business needs.",
+      "service_name_question": "What would you like to name this service ?",
+      "service_name": "Service name",
+      "service_type": "What kind of service is it?",
+      "create_btn": "Create Service"
+    }
   },
   "application_user_list": {
     "invitation_sent": "Invitation was sent to {{userEmail}}"

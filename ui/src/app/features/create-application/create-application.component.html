@@ -15,29 +15,83 @@
   -->
 <div class="container">
   <div class="application">
-    <h2 class="application__title">
-      {{ 'create_application_wizard.title.p1' | translate }} <br />{{ 'create_application_wizard.title.p2' | translate }}
-    </h2>
+    <mat-horizontal-stepper linear #stepper>
+      <mat-step [stepControl]="application" [editable]="isEditable">
+        <h2 class="application__title">
+          {{ 'create_application_wizard.application.title.p1' | translate }}
+          <br />{{ 'create_application_wizard.application.title.p2' | translate }}
+        </h2>
 
-    <p class="application__info">
-      <i>{{ 'create_application_wizard.info_about_application' | translate }}</i>
-    </p>
+        <p class="application__info">
+          <i>{{ 'create_application_wizard.application.info_about_application' | translate }}</i>
+        </p>
 
-    <p class="application__question">{{ 'create_application_wizard.application_name_question' | translate }}</p>
+        <p class="application__question">
+          {{ 'create_application_wizard.application.application_name_question' | translate }}
+        </p>
 
-    <div class="application__form">
-      <input
-        class="name-input"
-        type="text"
-        placeholder=" {{ 'create_application_wizard.application_name' | translate }}"
-        [(ngModel)]="applicationName"
-      />
+        <form class="application__form" [formGroup]="application">
+          <input
+            class="name-input"
+            matInput
+            formControlName="applicationName"
+            placeholder="{{ 'create_application_wizard.application.application_name' | translate }}"
+            required
+          />
 
-      <div class="next-btn">
-        <button mat-flat-button color="primary" (click)="onNext()">
-          {{ 'create_application_wizard.next' | translate }}
-        </button>
-      </div>
-    </div>
+          <div>
+            <button mat-flat-button color="primary" matStepperNext>
+              {{ 'create_application_wizard.application.next' | translate }}
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="service" [editable]="isEditable">
+        <div class="service-container">
+          <aside class="left">
+            <h2 class="application__title">
+              {{ 'create_application_wizard.service.title' | translate }}
+            </h2>
+
+            <p class="application__info">
+              <i>{{ 'create_application_wizard.service.info_about_service' | translate }}</i>
+            </p>
+
+            <form class="application__form" [formGroup]="service">
+              <p class="application__question">
+                {{ 'create_application_wizard.service.service_name_question' | translate }}
+              </p>
+
+              <input
+                class="name-input"
+                matInput
+                formControlName="serviceName"
+                placeholder="{{ 'create_application_wizard.application.application_name' | translate }}"
+                required
+              />
+
+              <p class="application__question">
+                {{ 'create_application_wizard.service.service_type' | translate }}
+              </p>
+
+              <mat-select class="name-input" required formControlName="serviceType">
+                <mat-option *ngFor="let service of serviceTypes" [value]="service">{{ service }}</mat-option>
+              </mat-select>
+
+              <div>
+                <button mat-flat-button color="primary" (click)="onSave()">
+                  {{ 'create_application_wizard.service.create_btn' | translate }}
+                </button>
+              </div>
+            </form>
+          </aside>
+
+          <aside class="right">
+            <h1>rifht aside</h1>
+          </aside>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
   </div>
 </div>

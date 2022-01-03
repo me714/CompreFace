@@ -14,6 +14,8 @@
  * permissions and limitations under the License.
  */
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ServiceTypes } from 'src/app/data/enums/service-types.enum';
 
 @Component({
   selector: 'app-create-application',
@@ -21,9 +23,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-application.component.scss'],
 })
 export class CreateApplicationComponent {
-  applicationName: string = '';
+  application: FormGroup;
+  service: FormGroup;
+  isEditable: boolean = false;
 
-  onNext() {
-    console.log(this.applicationName);
+  serviceTypes = [ServiceTypes.Recognition, ServiceTypes.Detection, ServiceTypes.Verification];
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.application = this.fb.group({
+      applicationName: ['', Validators.required],
+    });
+
+    this.service = this.fb.group({
+      serviceName: ['', Validators.required],
+      serviceType: [ServiceTypes.Recognition, Validators.required],
+    });
+  }
+
+  onSave() {
+    console.log(this.application.value);
+    console.log(this.service.value);
   }
 }
