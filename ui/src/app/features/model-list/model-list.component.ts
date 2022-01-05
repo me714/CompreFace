@@ -18,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { filter, first, map } from 'rxjs/operators';
+import { filter, first, map, tap } from 'rxjs/operators';
 import { Role } from 'src/app/data/enums/role.enum';
 import { Model } from 'src/app/data/interfaces/model';
 import { ITableConfig } from 'src/app/features/table/table.component';
@@ -148,6 +148,7 @@ export class ModelListComponent implements OnInit, OnDestroy {
   }
 
   onCreateNewModel(): void {
+    console.log('from create model service');
     const dialog = this.dialog.open(ModelCreateDialogComponent, {
       panelClass: 'custom-mat-dialog',
       data: {

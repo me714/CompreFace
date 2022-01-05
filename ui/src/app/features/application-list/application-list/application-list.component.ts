@@ -47,4 +47,9 @@ export class ApplicationListComponent {
 
     return this.tableConfig.data.length > 0 ? titleApp : titleCreate;
   }
+
+  onCreateApp() {
+    console.log('from application list component');
+    this.createApp.emit();
+  }
 }

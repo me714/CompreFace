@@ -13,33 +13,40 @@
   ~ or implied. See the License for the specific language governing
   ~ permissions and limitations under the License.
   -->
-<div class="application">
+<ng-container>
   <h2 class="application__title">
-    {{ 'create_application_wizard.application.title.p1' | translate }}
-    <br />{{ 'create_application_wizard.application.title.p2' | translate }}
+    {{ 'create_application_wizard.service.title' | translate }}
   </h2>
 
   <p class="application__info">
-    <i>{{ 'create_application_wizard.application.info_about_application' | translate }}</i>
+    <i>{{ 'create_application_wizard.service.info_about_service' | translate }}</i>
   </p>
 
-  <p class="application__question">
-    {{ 'create_application_wizard.application.application_name_question' | translate }}
-  </p>
+  <form class="application__form" [formGroup]="service">
+    <p class="application__question">
+      {{ 'create_application_wizard.service.service_name_question' | translate }}
+    </p>
 
-  <form class="application__form" [formGroup]="application">
     <input
       class="name-input"
       matInput
-      formControlName="applicationName"
+      formControlName="serviceName"
       placeholder="{{ 'create_application_wizard.application.application_name' | translate }}"
       required
     />
 
+    <p class="application__question">
+      {{ 'create_application_wizard.service.service_type' | translate }}
+    </p>
+
+    <mat-select class="name-input" required formControlName="serviceType">
+      <mat-option *ngFor="let service of serviceTypes" [value]="service">{{ service }}</mat-option>
+    </mat-select>
+
     <div>
-      <button mat-flat-button color="primary" [disabled]="!application.valid" matStepperNext (click)="onNext()">
-        {{ 'create_application_wizard.application.next' | translate }}
+      <button mat-flat-button color="primary" [disabled]="!service.valid" (click)="onSave()">
+        {{ 'create_application_wizard.service.create_btn' | translate }}
       </button>
     </div>
   </form>
-</div>
+</ng-container>

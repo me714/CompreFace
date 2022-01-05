@@ -22,10 +22,15 @@ import { CreateApplicationComponent } from './create-application.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { ApplicationNameComponent } from './application/application-name.component';
+import { CreateServiceComponent } from './service/create-service/create-service.component';
+import { ServiceInfoComponent } from './service/service-info/service-info.component';
+import { CreateApplicationFacade } from './create-application.facade';
 
 @NgModule({
-  declarations: [CreateApplicationComponent],
-  exports: [CreateApplicationComponent],
+  declarations: [CreateApplicationComponent, ApplicationNameComponent, CreateServiceComponent, ServiceInfoComponent],
   imports: [CommonModule, MatButtonModule, MatStepperModule, MatSelectModule, MatInputModule, TranslateModule, ReactiveFormsModule],
+  providers: [CreateApplicationFacade],
+  exports: [CreateApplicationComponent],
 })
 export class CreateApplicationModule {}

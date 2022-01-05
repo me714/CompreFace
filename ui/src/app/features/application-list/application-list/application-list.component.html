@@ -18,7 +18,7 @@ limitations under the License.
     [currentRole]="userRole"
     [requiredRole]="roleEnum.User"
     (inputSearch)="onSearch($event)"
-    (modalWindow)="createApp.emit()"
+    (modalWindow)="onCreateApp()"
     [title]="searchTitle()"
     buttonText="{{ 'applications.create.add_button' | translate }}"
     searchPlaceholder="{{ 'applications.search.title' | translate }}"

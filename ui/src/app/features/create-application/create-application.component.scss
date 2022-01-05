@@ -13,48 +13,7 @@
  * or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-@import 'mixins.scss';
-@import 'colors.scss';
 
-.application {
-  &__title {
-    font-size: 3.5rem;
-    line-height: 4rem;
-  }
-
-  &__info {
-    font-size: 0.8rem;
-    margin-bottom: 40px;
-  }
-
-  &__question {
-    font-size: 1.3rem;
-  }
-
-  &__form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50px;
-
-    .name-input {
-      padding: 8px;
-      margin-bottom: 50px;
-      border: 1px solid $super-light-gray;
-      border-radius: 4px;
-      box-sizing: border-box;
-      outline-color: $primary;
-
-      &::placeholder {
-        color: $gray;
-      }
-    }
-
-    .next-btn {
-      button {
-        line-height: 2rem;
-        letter-spacing: 1px;
-        padding: 0.2rem 1.7rem;
-      }
-    }
-  }
+.service-container {
+  display: flex;
 }

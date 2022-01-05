@@ -13,17 +13,12 @@
  * or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-create-application',
-  templateUrl: './create-application.component.html',
-  styleUrls: ['./create-application.component.scss'],
+  selector: 'service-info',
+  templateUrl: './service-info.component.html',
+  styleUrls: ['./service-info.component.scss'],
 })
-export class CreateApplicationComponent {
-  applicationName: string;
-
-  getApplicationName(name: string) {
-    this.applicationName = name;
-  }
-}
+export class ServiceInfoComponent {}
