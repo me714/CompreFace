@@ -19,7 +19,7 @@ import { forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ModelService } from 'src/app/core/model/model.service';
 import { SnackBarService } from 'src/app/features/snackbar/snackbar.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Routes } from '../../data/enums/routers-url.enum';
 
 import {
@@ -39,6 +39,7 @@ import {
   updateModelFail,
   updateModelSuccess,
 } from './action';
+import { ServiceTypes } from 'src/app/data/enums/service-types.enum';
 
 @Injectable()
 export class ModelEffects {
@@ -46,7 +47,8 @@ export class ModelEffects {
     private actions: Actions,
     private modelService: ModelService,
     private snackBarService: SnackBarService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   @Effect()
@@ -63,12 +65,34 @@ export class ModelEffects {
   @Effect()
   createModel$ = this.actions.pipe(
     ofType(createModel),
-    switchMap(action =>
-      this.modelService.create(action.model.applicationId, action.model.name, action.model.type).pipe(
-        map(model => createModelSuccess({ model })),
+    switchMap(action => {
+      const applicationId = action.model.applicationId;
+      return this.modelService.create(action.model.applicationId, action.model.name, action.model.type).pipe(
+        map(model => {
+          return createModelSuccess({ model, applicationId });
+        }),
         catchError(error => of(createModelFail({ error })))
-      )
-    )
+      );
+    })
+  );
+
+  @Effect({ dispatch: false })
+  createModelSuccess$ = this.actions.pipe(
+    ofType(createModelSuccess),
+    tap(({ model, applicationId }) => {
+      console.log(model);
+      if (model.type === ServiceTypes.Recognition) {
+        this.router.navigateByUrl(Routes.ManageCollection);
+      } else {
+        this.router.navigate([Routes.TestModel], {
+          queryParams: {
+            app: applicationId,
+            model: model.id,
+            type: model.type,
+          },
+        });
+      }
+    })
   );
 
   @Effect()

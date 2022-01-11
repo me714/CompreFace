@@ -22,11 +22,6 @@ export class CreateApplicationFacade {
   }
 
   createModel(name: string, type: string, applicationId: string): void {
-    console.log({
-      applicationId,
-      name,
-      type,
-    });
     this.store.dispatch(
       createModel({
         model: {
