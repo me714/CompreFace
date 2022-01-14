@@ -14,6 +14,7 @@
  * permissions and limitations under the License.
  */
 import { Component } from '@angular/core';
+import { CreateApplicationFacade } from './create-application.facade';
 
 @Component({
   selector: 'app-create-application',
@@ -23,7 +24,10 @@ import { Component } from '@angular/core';
 export class CreateApplicationComponent {
   applicationName: string;
 
+  constructor(private appFacade: CreateApplicationFacade) {}
+
   getApplicationName(name: string) {
     this.applicationName = name;
+    this.appFacade.createApplication(this.applicationName);
   }
 }

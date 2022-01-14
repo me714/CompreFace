@@ -216,6 +216,7 @@
       "info_about_application": "Application is where you can create and manage your face recognition services. It allows restricting their visibility from other users",
       "application_name_question": "What would you like to name this application ?",
       "application_name": "Application name",
+      "error_msg": "Application name is not unique",
       "next": "Next"
     },
     "service": {

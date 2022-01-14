@@ -14,9 +14,9 @@
   ~ permissions and limitations under the License.
   -->
 <div class="container">
-  <mat-horizontal-stepper>
+  <mat-horizontal-stepper #stepper>
     <mat-step>
-      <application-name (applicationName)="getApplicationName($event)"></application-name>
+      <application-name (applicationName)="getApplicationName($event)" [stepper]="stepper"></application-name>
     </mat-step>
 
     <mat-step>

@@ -38,7 +38,6 @@
 
     .name-input {
       padding: 8px;
-      margin-bottom: 50px;
       border: 1px solid $super-light-gray;
       border-radius: 4px;
       box-sizing: border-box;
@@ -50,6 +49,7 @@
     }
 
     .next-btn {
+      margin-top: 50px;
       button {
         line-height: 2rem;
         letter-spacing: 1px;

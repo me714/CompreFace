@@ -35,9 +35,14 @@
       placeholder="{{ 'create_application_wizard.application.application_name' | translate }}"
       required
     />
+    <mat-error *ngIf="!isValid">
+      <small>
+        <i>{{ 'create_application_wizard.application.error_msg' | translate }}</i>
+      </small>
+    </mat-error>
 
-    <div>
-      <button mat-flat-button color="primary" [disabled]="!application.valid" matStepperNext (click)="onNext()">
+    <div class="next-btn">
+      <button mat-flat-button color="primary" [disabled]="!application.valid || !isValid" (click)="onNext()">
         {{ 'create_application_wizard.application.next' | translate }}
       </button>
     </div>
